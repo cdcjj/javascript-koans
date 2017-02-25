@@ -108,7 +108,7 @@ describe("About Functions", function() {
       // add to string
       return a * b;
     };
-    expect(multiply.toString()).toBe('function (a, b) {/n'
+    expect(multiply.toString()).toBe('function (a, b) {/n' +
       '// add to string/n' +
       'return a * b;');
   });    
