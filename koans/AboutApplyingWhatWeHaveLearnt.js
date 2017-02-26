@@ -100,26 +100,73 @@ describe("About Applying What We Have Learnt", function() {
 
   /*********************************************************************************/
   /* UNCOMMENT FOR EXTRA CREDIT */
-  /*
-  it("should find the largest prime factor of a composite number", function () {
   
+  it("should find the largest prime factor of a composite number", function () {
+    var num = 20;
+    var getLargestPrimeFactor = function(n) {
+      var largestPrimeFactor;
+      var factor = 2;
+
+      while (n > 1) {
+        if (n % factor === 0){
+          largestPrimeFactor = factor;
+          n = n / factor;
+
+          while (n % factor === 0) {
+            n = n / factor;
+          }
+        }
+        factor += (factor === 2) ? 1 : 2;
+      }
+      return largestPrimeFactor;
+    }
+    expect(getLargestPrimeFactor(32)).toBe(2);
+    expect(getLargestPrimeFactor(20)).toBe(5);
+    expect(getLargestPrimeFactor(30)).toBe(5);
+    expect(getLargestPrimeFactor(21)).toBe(7);
   });
 
   it("should find the largest palindrome made from the product of two 3 digit numbers", function () {
+    var palindrome = 0;
+    var isPalindrome = function (num){
+      var strNum = num.toString();
+      var reversed = strNum.split("").reverse().join("");
+
+      return strNum === reversed;
+    }
+    var findLargestPalindrome = function() {
+      for (var i = 999; i > 99; i--) {
+        for (var j = 999; j > 99; j--){
+          var testNum = i * j;
+          if (testNum < palindrome) {
+            break;
+          }
+          if (isPalindrome(testNum)) {
+            palindrome = testNum;
+          }
+        }
+      }
+      return palindrome;
+    }
+
+    expect(findLargestPalindrome()).toBe(906609);
     
   });
 
-  it("should find the smallest number divisible by each of the numbers 1 to 20", function () {
-      
+  // it("should find the smallest number divisible by each of the numbers 1 to 20", function () {
     
-  });
+  // });
 
   it("should find the difference between the sum of the squares and the square of the sums", function () {
-    
+    function diffBtwSumSquares(a, b) {
+      return ((a + b) * (a + b)) - (a * a + b * b);
+    }
+
+    expect(diffBtwSumSquares(5, 10)).toBe(100);
   });
 
-  it("should find the 10001st prime", function () {
+  // it("should find the 10001st prime", function () {
 
-  });
-  */
+  // });
+  
 });
